@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: GTSuperBold;
+  src: url("/fonts/GT-Super-Display-Bold-Trial.otf");
+}
+
+@font-face {
+  font-family: GTSuperLight;
+  src: url("/fonts/GT-Super-Display-Light-Trial.otf");
+}
+
+@font-face {
+  font-family: GTSuperMedium;
+  src: url("/fonts/GT-Super-Display-Medium-Trial.otf");
+}
+
+@font-face {
+  font-family: GTSuperRegular;
+  src: url("/fonts/GT-Super-Display-Regular-Trial.otf");
+}
+
+@font-face {
+  font-family: SohneLight;
+  src: url("/fonts/TestSöhne-Leicht.otf");
+}
+
+@font-face {
+  font-family: SohneBold;
+  src: url("/fonts/TestSöhne-Buch.otf");
+}
+
+.font-GTSuperBold {
+  font-family: GTSuperBold;
+}
+
+.font-GTSuperLight {
+  font-family: GTSuperLight;
+}
+
+.font-GTSuperMedium {
+  font-family: GTSuperMedium;
+}
+
+.font-GTSuperRegular {
+  font-family: GTSuperRegular;
+}
+
+.font-SohneBold {
+  font-family: SohneBold;
+}
+
+.font-SohneLight {
+  font-family: SohneLight;
+}
+
+.get-started-bg-color {
+  background-color: #f7f4ed;
+}
+
+.container-get-started {
+  max-width: 71%;
+  margin: 0 auto;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(
+    255,
+    255,
+    254,
+    0.8
+  ); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
