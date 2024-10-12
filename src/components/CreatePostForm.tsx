@@ -15,7 +15,11 @@ export default function CreatePostForm({
 
   useEffect(() => {
     if (textareaRef.current) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
       textareaRef.current.style.height = "auto";
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [body]);
