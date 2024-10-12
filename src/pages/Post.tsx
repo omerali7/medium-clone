@@ -21,7 +21,7 @@ export default function Post() {
     <>
       <MainHeader />
 
-      <main className="md:container-post-lg px-5 pt-6 md:px-0 sm:pt-12 xl:container-post-xl">
+      <main className="md:container-post-lg xl:container-post-xl px-5 pt-6 sm:pt-12 md:px-0">
         <h1 className="font-SohneBoldNew text-3xl leading-[1.3] tracking-wide md:text-4xl">
           {!isLoading ? (
             <div className="opacity-100 transition-opacity duration-500">

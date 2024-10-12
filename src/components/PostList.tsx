@@ -10,18 +10,22 @@ export default function PostList({
 }) {
   return (
     <>
-      {data.map((post: PostType) => (
-        <Post
-          key={post.id}
-          title={post.title}
-          content={post.content}
-          image={post.image}
-          id={post.id}
-          createdAt={post.createdAt}
-          user={post.user}
-          profile={profile}
-        />
-      ))}
+      {data.length !== 0 || !data ? (
+        data.map((post: PostType) => (
+          <Post
+            key={post.id}
+            title={post.title}
+            content={post.content}
+            image={post.image}
+            id={post.id}
+            createdAt={post.createdAt}
+            user={post.user}
+            profile={profile}
+          />
+        ))
+      ) : (
+        <p>No posts</p>
+      )}
     </>
   );
 }

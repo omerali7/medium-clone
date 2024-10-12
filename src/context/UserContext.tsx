@@ -86,7 +86,7 @@ export default function UserProvider({
   useEffect(() => {
     if (!isGoogleAuth)
       axios
-        .post("http://localhost:8080/api/auth/session/validate", "", {
+        .post(`${import.meta.env.VITE_API_URL}/api/auth/session/validate`, "", {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",

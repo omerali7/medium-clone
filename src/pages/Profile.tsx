@@ -7,6 +7,7 @@ import {
 } from "../react-query/queriesAndMutation";
 import ProfileInformation from "../components/ProfileInformation";
 import { useUserContext } from "../context/UserContext";
+import { useState } from "react";
 
 export default function Profile() {
   const { user, isLoading: isUserLoading } = useUserContext();
@@ -21,6 +22,10 @@ export default function Profile() {
     pathname === "/my-profile" ? user.id : Number(id),
   );
 
+  const [currentOpen, setCurrentOpen] = useState<string>("stories");
+
+  console.log(userData);
+
   const { data, isLoading } = useGetPostsByUserId(
     pathname === "/my-profile" ? user.id : Number(id),
   );
@@ -30,8 +35,47 @@ export default function Profile() {
   return (
     <div className="h-dvh">
       <MainHeader />
-      <main className="container-home flex h-full w-full justify-evenly gap-16">
-      
+      <main className="lg:container-home h-full w-full lg:flex lg:justify-evenly lg:gap-16">
+        <div className="sm:container-profile px-6 pt-6 lg:hidden">
+          <ProfileInformation
+            isLoggedInUser={isLoggedInUser}
+            name={userData.name}
+            image={userData.image}
+          />
+          <div className="font-SohneLight mt-6 flex items-center gap-8 border-b text-base text-[#6B6B6B]">
+            <button
+              className={`pb-2 ${currentOpen === "stories" && "border-b border-black text-[#242424]"}`}
+              onClick={() => setCurrentOpen("stories")}
+            >
+              Stories
+            </button>
+            {isLoggedInUser && (
+              <button
+                className={`pb-2 ${currentOpen === "edit" && "border-b border-black text-[#242424]"}`}
+                onClick={() => setCurrentOpen("edit")}
+              >
+                Edit
+              </button>
+            )}
+          </div>
+          {currentOpen === "stories" && (
+            <div className="mt-6 divide-y divide-[#F2F2F2]">
+              {!isLoading && data !== "" ? (
+                <PostList data={data} profile={isLoggedInUser} />
+              ) : (
+                <p>No posts yet</p>
+              )}
+            </div>
+          )}
+          {currentOpen === "edit" && (
+            <ProfileInformation
+              isLoggedInUser={isLoggedInUser}
+              name={userData.name}
+              image={userData.image}
+              currentOpen={true}
+            />
+          )}
+        </div>
 
         <div className="hidden h-full w-[62%] border-[#F2F2F2] pt-10 lg:block">
           <div className="flex items-center justify-between">

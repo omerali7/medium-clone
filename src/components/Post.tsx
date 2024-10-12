@@ -19,7 +19,7 @@ export default function Post({
 }: PostType & PostProps) {
   return (
     <Link to={`/post/${id}`} className="inline-block">
-      <div className="grid w-[100%] cursor-pointer grid-cols-12  pb-8 pt-6 sm:gap-10">
+      <div className="grid w-[100%] cursor-pointer grid-cols-12 pb-8 pt-6 sm:gap-10">
         <div className="col-span-8 flex flex-col">
           <PostProfile user={user} />
           <h1 className="font-SohneBoldNew mt-3 text-[18px] leading-[1.4] text-[#242424] sm:text-[22px]">
@@ -32,7 +32,7 @@ export default function Post({
         </div>
         <div className="col-span-4 mb-4 ml-4 mt-8 self-start sm:mt-0 sm:self-end">
           {profile && <MdDeleteOutline className="mb-8 ml-auto text-red" />}
-          <img src={image} className="w-full" />
+          <img src={image} className="skeleton w-full" />
         </div>
       </div>
     </Link>

@@ -29,7 +29,7 @@ export default function FileUploader() {
       data.append("cloud_name", "dknlxelxa");
 
       const res = await axios.post(
-        `https://api.cloudinary.com/v1_1/dknlxelxa/image/upload`,
+        import.meta.env.VITE_CLOUDINARY_API_URL,
         data,
       );
 
@@ -70,7 +70,7 @@ export default function FileUploader() {
             height={77}
             alt="file-upload"
           /> */}
-          <h3 className="font-SohneLight px-12 py-12 sm:px-16 sm:py-20 text-center text-sm text-[#737373]">
+          <h3 className="font-SohneLight px-12 py-12 text-center text-sm text-[#737373] sm:px-16 sm:py-20">
             Include a high-quality image in your story to make it more inviting
             to readers.
           </h3>

@@ -21,7 +21,7 @@ export default function CreatePostForm({
   }, [body]);
 
   return (
-    <form className="sm:container-create px-6 sm:p-0">
+    <form className="sm:container-form px-6 sm:p-0">
       <textarea
         placeholder="Title"
         className="font-GTSuperBold w-full resize-none text-4xl tracking-wide outline-none placeholder:text-[#B3B3B1]"

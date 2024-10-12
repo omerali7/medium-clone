@@ -18,7 +18,7 @@ export type PostUser = {
 export async function createPost(post: Post, userId: number) {
   try {
     const res = await axios.post(
-      `http://localhost:8080/posts/${userId}`,
+      `${import.meta.env.VITE_API_URL}/posts/${userId}`,
       JSON.stringify(post),
       {
         headers: {
@@ -35,7 +35,7 @@ export async function createPost(post: Post, userId: number) {
 
 export async function getAllPosts() {
   try {
-    const res = await axios.get("http://localhost:8080/posts");
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`);
 
     return res.data;
   } catch (error) {
@@ -45,7 +45,9 @@ export async function getAllPosts() {
 
 export async function getPostById(postId: number) {
   try {
-    const res = await axios.get(`http://localhost:8080/posts/${postId}`);
+    const res = await axios.get(
+      `${import.meta.env.VITE_API_URL}/posts/${postId}`,
+    );
 
     return res.data;
   } catch (error) {
@@ -55,7 +57,9 @@ export async function getPostById(postId: number) {
 
 export async function getPostsByUserId(userId: number | undefined) {
   try {
-    const res = await axios.get(`http://localhost:8080/posts/user/${userId}`);
+    const res = await axios.get(
+      `${import.meta.env.VITE_API_URL}/posts/user/${userId}`,
+    );
 
     return res.data;
   } catch (error) {
@@ -65,7 +69,9 @@ export async function getPostsByUserId(userId: number | undefined) {
 
 export async function getPostByTitle(title: string) {
   try {
-    const res = await axios.get(`http://localhost:8080/posts/title?q=${title}`);
+    const res = await axios.get(
+      `${import.meta.env.VITE_API_URL}/posts/title?q=${title}`,
+    );
 
     return res.data;
   } catch (error) {
