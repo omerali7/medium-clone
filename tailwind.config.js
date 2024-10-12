@@ -80,7 +80,7 @@ module.exports = {
         },
       },
       screens: {
-        first: "390px",
+        first: "1200px",
       },
       width: {
         420: "420px",
@@ -109,7 +109,6 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-     
     },
   },
 };

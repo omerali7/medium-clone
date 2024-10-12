@@ -74,33 +74,18 @@
   background-color: #f7f4ed;
 }
 
-.container-get-started {
-  max-width: 71%;
+/* .container-get-started {
+  max-width: 71% !important;
+  margin: 0 auto !important;
+} */
+
+.container-get-started-md {
+  max-width: 62%;
   margin: 0 auto;
 }
 
 .container-get-sterted-md {
   max-width: 30%;
-  margin: 0 auto;
-}
-
-.container-home {
-  max-width: 66%;
-  margin: 0 auto;
-}
-
-.container-create {
-  max-width: 64%;
-  margin: 0 auto;
-}
-
-.container-form {
-  max-width: 42%;
-  margin: 0 auto;
-}
-
-.container-post {
-  max-width: 38%;
   margin: 0 auto;
 }
 
@@ -187,6 +172,46 @@
   /* TYPOGRAPHY */
   .h1-bold {
     @apply text-[36px] font-bold leading-[140%] tracking-tighter;
+  }
+
+  .container-get-started {
+    max-width: 71%;
+    margin: 0 auto;
+  }
+
+  .container-home {
+    max-width: 66%;
+    margin: 0 auto;
+  }
+
+  .container-home-bg {
+    max-width: 74%;
+    margin: 0 auto;
+  }
+
+  .container-form {
+    max-width: 42%;
+    margin: 0 auto;
+  }
+
+  .container-create {
+    max-width: 64%;
+    margin: 0 auto;
+  }
+
+  .container-post-xl {
+    max-width: 42%;
+    margin: 0 auto;
+  }
+
+  .container-post-lg {
+    max-width: 74%;
+    margin: 0 auto;
+  }
+
+  .container-profile {
+    max-width: 64%;
+    margin: 0 auto;
   }
 
   .h1-semibold {
@@ -287,7 +312,7 @@
   }
 
   .user-grid {
-    @apply grid w-full max-w-5xl grid-cols-1 gap-7 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3;
+    @apply xs:grid-cols-2 grid w-full max-w-5xl grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3;
   }
 
   /* Explore */
@@ -401,7 +426,7 @@
   }
 
   .post-card_img {
-    @apply mb-5 h-64 w-full rounded-[24px] object-cover xs:h-[400px] lg:h-[450px];
+    @apply xs:h-[400px] mb-5 h-64 w-full rounded-[24px] object-cover lg:h-[450px];
   }
 
   /* Topbar */

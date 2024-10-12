@@ -89,7 +89,7 @@ export default function SignUpForm() {
             setName(e.target.value);
           }}
           type="text"
-          className={`font-SohneLight w-[40%] rounded-sm border bg-[#F2F2F2] px-2 py-1.5 text-center text-sm outline-none focus:bg-[#F9F9F9] ${nameError ? "border-[#C94A4A]" : "border-[#F2F2F2] focus:border-black"}`}
+          className={`font-SohneLight w-[60%] rounded-sm border bg-[#F2F2F2] px-2 py-1.5 text-center text-sm outline-none focus:bg-[#F9F9F9] xl:w-[44%] ${nameError ? "border-[#C94A4A]" : "border-[#F2F2F2] focus:border-black"}`}
           id="name"
         />
         {nameError && (
@@ -110,7 +110,7 @@ export default function SignUpForm() {
             setEmail(e.target.value);
           }}
           type="email"
-          className={`font-SohneLight w-[40%] rounded-sm border bg-[#F2F2F2] px-2 py-1.5 text-center text-sm outline-none focus:bg-[#F9F9F9] ${emailError ? "border-[#C94A4A]" : "border-[#F2F2F2] focus:border-black"}`}
+          className={`font-SohneLight w-[60%] rounded-sm border bg-[#F2F2F2] px-2 py-1.5 text-center text-sm outline-none focus:bg-[#F9F9F9] xl:w-[44%] ${emailError ? "border-[#C94A4A]" : "border-[#F2F2F2] focus:border-black"}`}
           id="email"
         />
         {emailError && (
@@ -130,7 +130,7 @@ export default function SignUpForm() {
             setPassword(e.target.value);
           }}
           type="password"
-          className={`font-SohneLight w-[40%] rounded-sm border bg-[#F2F2F2] px-2 py-1.5 text-center text-sm outline-none focus:bg-[#F9F9F9] ${passwordError ? "border-[#C94A4A]" : "border-[#F2F2F2] focus:border-black"}`}
+          className={`font-SohneLight w-[60%] rounded-sm border bg-[#F2F2F2] px-2 py-1.5 text-center text-sm outline-none focus:bg-[#F9F9F9] xl:w-[44%] ${passwordError ? "border-[#C94A4A]" : "border-[#F2F2F2] focus:border-black"}`}
           id="password"
         />
         {passwordError && (

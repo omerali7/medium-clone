@@ -13,7 +13,7 @@ export default function CreatePost() {
 
   return (
     <>
-      <div className="container-create h-full">
+      <div className="sm:container-create h-full px-6 sm:p-0">
         <CreatePostHeader title={title} body={body} />
       </div>
       <CreatePostForm

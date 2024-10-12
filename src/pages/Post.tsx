@@ -21,8 +21,8 @@ export default function Post() {
     <>
       <MainHeader />
 
-      <main className="container-post pt-12">
-        <h1 className="font-SohneBoldNew text-4xl leading-[1.3] tracking-wide">
+      <main className="md:container-post-lg px-5 pt-6 md:px-0 sm:pt-12 xl:container-post-xl">
+        <h1 className="font-SohneBoldNew text-3xl leading-[1.3] tracking-wide md:text-4xl">
           {!isLoading ? (
             <div className="opacity-100 transition-opacity duration-500">
               {data.title}
@@ -35,7 +35,7 @@ export default function Post() {
           <div className="mt-5 flex gap-4">
             <img
               src={`${!isLoading ? data.user.image : ""}`}
-              className="skeleton w-[8%] rounded-full"
+              className="skeleton w-[13.5%] rounded-full sm:w-[8%]"
             />
             <div className="mb-[2px] flex w-full flex-col">
               {!isLoading ? (
@@ -63,10 +63,10 @@ export default function Post() {
               src={data.image}
               className="mt-10 w-full opacity-100 transition-opacity duration-500"
             />
-            <p className="font-GTSuperLight mt-10 text-xl leading-[1.6] tracking-wider text-black opacity-100 transition-opacity duration-500">
+            <p className="font-GTSuperLight mt-10 text-lg leading-[1.6] tracking-wider text-black opacity-100 transition-opacity duration-500 sm:text-xl">
               {data.content}
             </p>
-            <div className="w-full flex items-end mb-4">
+            <div className="mb-4 flex w-full items-end">
               <p className="font-SohneLight ml-auto mt-4 flex cursor-pointer items-center gap-2 text-sm text-[#6B6B6B]">
                 <FaHandsClapping /> <span>23</span>
               </p>

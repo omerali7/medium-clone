@@ -19,18 +19,18 @@ export default function Post({
 }: PostType & PostProps) {
   return (
     <Link to={`/post/${id}`} className="inline-block">
-      <div className="grid w-[100%] cursor-pointer grid-cols-12 gap-10 pb-8 pt-6">
+      <div className="grid w-[100%] cursor-pointer grid-cols-12  pb-8 pt-6 sm:gap-10">
         <div className="col-span-8 flex flex-col">
           <PostProfile user={user} />
-          <h1 className="font-SohneBoldNew mt-3 text-[22px] leading-[1.4] text-[#242424]">
+          <h1 className="font-SohneBoldNew mt-3 text-[18px] leading-[1.4] text-[#242424] sm:text-[22px]">
             {title}
           </h1>
-          <p className="font-SohneLight mt-2 line-clamp-3 text-[15px] text-[#6B6B6B]">
+          <p className="font-SohneLight mt-2 line-clamp-2 text-[13px] text-[#6B6B6B] sm:line-clamp-3 sm:text-[15px]">
             {content}
           </p>
           <PostDetails createdAt={createdAt || ""} />
         </div>
-        <div className="col-span-4 mb-4 ml-4 self-end">
+        <div className="col-span-4 mb-4 ml-4 mt-8 self-start sm:mt-0 sm:self-end">
           {profile && <MdDeleteOutline className="mb-8 ml-auto text-red" />}
           <img src={image} className="w-full" />
         </div>

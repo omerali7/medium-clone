@@ -70,7 +70,7 @@ export default function FileUploader() {
             height={77}
             alt="file-upload"
           /> */}
-          <h3 className="font-SohneLight px-16 py-20 text-center text-sm text-[#737373]">
+          <h3 className="font-SohneLight px-12 py-12 sm:px-16 sm:py-20 text-center text-sm text-[#737373]">
             Include a high-quality image in your story to make it more inviting
             to readers.
           </h3>

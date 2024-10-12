@@ -19,8 +19,8 @@ export default function Home() {
       className={`${data === 0 || queryPostData === 0 ? "h-dvh" : "h-full"}`}
     >
       <MainHeader />
-      <main className="container-home flex h-full w-full justify-evenly gap-16">
-        <div className="h-full w-[62%] divide-y divide-[#F2F2F2] border-[#F2F2F2] pt-6">
+      <main className="lg:container-home sm:container-home-bg flex h-full w-full justify-evenly gap-16">
+        <div className="h-full w-[100%] divide-y divide-[#F2F2F2] border-[#F2F2F2] pt-6 px-4 sm:px-0">
           {query ? (
             !queryPostDataLoading && queryPostData !== "" ? (
               <PostList data={queryPostData} />
@@ -31,7 +31,7 @@ export default function Home() {
             !isLoading && <PostList data={data} />
           )}
         </div>
-        <div className="w-[28%] border-l pt-6"></div>
+        <div className="w-[28%] border-l pt-6 hidden xl:block"></div>
       </main>
     </div>
   );

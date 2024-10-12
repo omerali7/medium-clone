@@ -79,7 +79,7 @@ export default function SignInForm() {
               setEmail(e.target.value);
             }}
             type="email"
-            className={`font-SohneLight w-[40%] rounded-sm border bg-[#F2F2F2] px-2 py-1.5 text-center text-sm outline-none focus:bg-[#F9F9F9] ${emailError ? "border-[#C94A4A]" : "border-[#F2F2F2] focus:border-black"}`}
+            className={`font-SohneLight xl:w-[44%] w-[60%] rounded-sm border bg-[#F2F2F2] px-2 py-1.5 text-center text-sm outline-none focus:bg-[#F9F9F9] ${emailError ? "border-[#C94A4A]" : "border-[#F2F2F2] focus:border-black"}`}
             id="email"
           />
           {emailError && (
@@ -99,7 +99,7 @@ export default function SignInForm() {
               setPassword(e.target.value);
             }}
             type="password"
-            className={`font-SohneLight w-[40%] rounded-sm border bg-[#F2F2F2] px-2 py-1.5 text-center text-sm outline-none focus:bg-[#F9F9F9] ${passwordError ? "border-[#C94A4A]" : "border-[#F2F2F2] focus:border-black"}`}
+            className={`font-SohneLight xl:w-[44%] w-[60%] rounded-sm border bg-[#F2F2F2] px-2 py-1.5 text-center text-sm outline-none focus:bg-[#F9F9F9] ${passwordError ? "border-[#C94A4A]" : "border-[#F2F2F2] focus:border-black"}`}
             id="password"
           />
           {passwordError && (

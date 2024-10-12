@@ -2,7 +2,7 @@ import Links from "./Links";
 
 export default function GetStartedFooter() {
   return (
-    <footer className="flex items-center justify-center gap-4 border-t border-black py-4 pt-5">
+    <footer className="hidden items-center justify-center gap-4 border-t border-black py-4 pt-5 md:flex">
       <Links to="" label="Help" type="light" />
       <Links to="" label="Status" type="light" />
       <Links to="" label="About" type="light" />

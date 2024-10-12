@@ -31,7 +31,9 @@ export default function Profile() {
     <div className="h-dvh">
       <MainHeader />
       <main className="container-home flex h-full w-full justify-evenly gap-16">
-        <div className="h-full w-[62%] border-[#F2F2F2] pt-10">
+      
+
+        <div className="hidden h-full w-[62%] border-[#F2F2F2] pt-10 lg:block">
           <div className="flex items-center justify-between">
             <h1 className="font-SohneBoldNew text-4xl">
               {isLoggedInUser ? "Your stories" : "Stories"}
@@ -55,7 +57,7 @@ export default function Profile() {
             )}
           </div>
         </div>
-        <div className="w-[28%] border-l pt-10">
+        <div className="hidden w-[28%] pt-10 lg:block lg:border-l">
           <ProfileInformation
             isLoggedInUser={isLoggedInUser}
             name={userData.name}

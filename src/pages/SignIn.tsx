@@ -7,7 +7,7 @@ export default function SignIn() {
 
   return (
     <div id="overlay">
-      <div className="absolute bottom-0 left-0 right-0 top-0 m-auto h-3/4 w-2/5 rounded-md bg-white px-4 py-6 shadow-md">
+      <div className="absolute m-auto h-full w-full rounded-md bg-white md:px-4 px-2 py-6 shadow-md md:bottom-0 md:left-0 md:right-0 md:top-0 md:h-3/4 md:w-2/5">
         <IoCloseOutline
           className="ml-auto h-6 w-6 cursor-pointer font-thin"
           onClick={() => navigate("/")}

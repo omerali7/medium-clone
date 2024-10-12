@@ -15,7 +15,7 @@ export default function CreatePostHeader({
       <Link to="/home">
         <img src="/logo.svg" className="w-40" />
       </Link>
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3 sm:gap-6">
         <Link
           to={`${title || body ? "edit" : "/create"}`}
           className={`font-SohneLight rounded-full bg-[#0F730C] px-3 pb-1.5 pt-1 text-sm text-white ${title || body ? "" : "opacity-20"}`}

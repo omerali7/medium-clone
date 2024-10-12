@@ -15,7 +15,7 @@ export default function Edit() {
   return (
     <div id="overlay-create">
       <form
-        className="absolute inset-0 m-auto h-[74%] w-[50%]"
+        className="absolute inset-0 m-auto h-[74%] w-[72%] sm:w-[50%]"
         onSubmit={(e) => onSubmit(e, user.id || 1)}
       >
         <IoCloseOutline
@@ -23,7 +23,7 @@ export default function Edit() {
           onClick={() => navigate("/create")}
         />
         <div className="grid h-full grid-cols-1 justify-items-center pt-20">
-          <div className="w-[60%]">
+          <div className="w-[100%] lg:w-[60%]">
             <h3 className="font-SohneBold text-lg">Story Preview</h3>
             <FileUploader />
             <div className="flex flex-col divide-y divide-[#ccc]">
@@ -41,3 +41,4 @@ export default function Edit() {
     </div>
   );
 }
+
