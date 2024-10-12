@@ -1,8 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import GetStartedFooter from "../components/GetStartedFooter";
 import GetStartedHeader from "../components/GetStartedHeader";
+import { useUserContext } from "../context/UserContext";
 
 export default function GetStarted() {
+  const { isAuthenticated } = useUserContext();
+
+  const navigate = useNavigate();
+
+  if (isAuthenticated) navigate("/home");
+
   return (
     <>
       <div className="get-started-bg-color relative h-dvh w-full">

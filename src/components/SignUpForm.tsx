@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCreateUser } from "../react-query/queriesAndMutation";
 import { User } from "../api/user";
+import { useUserContext } from "../context/UserContext";
 
 export default function SignUpForm() {
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const {
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    setAuthenticated,
+    setUser,
+  } = useUserContext();
 
   const [nameError, setNameError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
@@ -41,9 +49,23 @@ export default function SignUpForm() {
 
     const createdUser = await createUser(user);
 
-    if (createdUser) navigate("/home");
+    if (createdUser) {
+      setAuthenticated(true);
+      navigate("/home");
 
-    if (!createdUser) setGlobalError(true);
+      setUser({
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        id: user.id,
+        image: user.image,
+      });
+    }
+
+    if (!createdUser) {
+      setAuthenticated(false);
+      setGlobalError(true);
+    }
 
     setEmail("");
     setPassword("");
