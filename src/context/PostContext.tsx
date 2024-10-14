@@ -42,7 +42,7 @@ export default function PostProvider({
 
   const [query, setQuery] = useState<string>("");
 
-  const [isCreatingPost, setIsCreatingPost] = useState<boolean>(true);
+  const [isCreatingPost, setIsCreatingPost] = useState<boolean>(false);
 
   const { mutateAsync } = useCreatePost();
 
