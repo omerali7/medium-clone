@@ -117,7 +117,7 @@ export default function UserProvider({
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/session", {
+      .get(`${import.meta.env.VITE_API_URL}/api/session`, {
         withCredentials: true, // Ensure cookies are sent with the request
       })
       .then((res) => {
