@@ -6,7 +6,7 @@ import { useUserContext } from "../context/UserContext";
 
 export default function Edit() {
   const navigate = useNavigate();
-  const { title, content, onSubmit } = usePostContext();
+  const { title, content, onSubmit, isCreatingPost } = usePostContext();
 
   const { user, isLoading } = useUserContext();
 
@@ -31,8 +31,10 @@ export default function Edit() {
               <p className="font-SohneLight line-clamp-3 pt-4 text-sm text-[#737373]">
                 {content}
               </p>
-              <button className="font-SohneLight mt-6 self-center rounded-full bg-[#0F730C] px-4 pb-2.5 pt-2 text-sm text-white">
-                Publish now
+              <button
+                className={`font-SohneLight mt-6 self-center rounded-full ${!isCreatingPost ? "bg-[#0F730C]" : "bg-[#0b5209]"} px-4 pb-2.5 pt-2 text-sm text-white`}
+              >
+                {!isCreatingPost ? "Publish now" : "Creating Post"}
               </button>
             </div>
           </div>
@@ -41,4 +43,3 @@ export default function Edit() {
     </div>
   );
 }
-

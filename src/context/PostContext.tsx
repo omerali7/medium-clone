@@ -11,6 +11,8 @@ type PostState = {
   onSubmit: (e: React.FormEvent, userId: number) => void;
   query: string;
   setQuery: React.Dispatch<React.SetStateAction<string>>;
+  isCreatingPost: boolean;
+  setIsCreatingPost: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const initialState: Post & PostState = {
@@ -23,6 +25,8 @@ const initialState: Post & PostState = {
   onSubmit: () => {},
   query: "",
   setQuery: () => {},
+  isCreatingPost: true,
+  setIsCreatingPost: () => {},
 };
 
 const PostContext = createContext(initialState);
@@ -38,11 +42,14 @@ export default function PostProvider({
 
   const [query, setQuery] = useState<string>("");
 
+  const [isCreatingPost, setIsCreatingPost] = useState<boolean>(true);
+
   const { mutateAsync } = useCreatePost();
 
   const navigate = useNavigate();
 
   const onSubmit = async (e: React.FormEvent, userId: number) => {
+    setIsCreatingPost(true);
     e.preventDefault();
 
     console.log(file);
@@ -59,6 +66,7 @@ export default function PostProvider({
 
     if (createdPost) {
       console.log(createdPost);
+      setIsCreatingPost(false);
       navigate(`/post/${createdPost.id}`);
     }
 
@@ -72,6 +80,8 @@ export default function PostProvider({
   return (
     <PostContext.Provider
       value={{
+        isCreatingPost,
+        setIsCreatingPost,
         query,
         setQuery,
         title,
