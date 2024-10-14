@@ -32,7 +32,7 @@ export default function Post({
         </div>
         <div className="col-span-4 mb-4 ml-4 mt-8 self-start sm:mt-0 sm:self-end">
           {profile && <MdDeleteOutline className="mb-8 ml-auto text-red" />}
-          <img src={image} className="skeleton w-full" />
+          <img src={image} className="w-full" />
         </div>
       </div>
     </Link>

@@ -24,13 +24,11 @@ export default function Profile() {
 
   const [currentOpen, setCurrentOpen] = useState<string>("stories");
 
-  console.log(userData);
-
   const { data, isLoading } = useGetPostsByUserId(
     pathname === "/my-profile" ? user.id : Number(id),
   );
 
-  if (isUserLoading || isLoading || userDataLoading) return null;
+  if (isLoading || userDataLoading || isUserLoading) return null;
 
   return (
     <div className="h-dvh">
@@ -39,8 +37,8 @@ export default function Profile() {
         <div className="sm:container-profile px-6 pt-6 lg:hidden">
           <ProfileInformation
             isLoggedInUser={isLoggedInUser}
-            name={userData.name}
-            image={userData.image}
+            name={userData?.name}
+            image={userData?.image}
           />
           <div className="font-SohneLight mt-6 flex items-center gap-8 border-b text-base text-[#6B6B6B]">
             <button
@@ -70,8 +68,8 @@ export default function Profile() {
           {currentOpen === "edit" && (
             <ProfileInformation
               isLoggedInUser={isLoggedInUser}
-              name={userData.name}
-              image={userData.image}
+              name={userData?.name}
+              image={userData?.image}
               currentOpen={true}
             />
           )}
@@ -104,8 +102,8 @@ export default function Profile() {
         <div className="hidden w-[28%] pt-10 lg:block lg:border-l">
           <ProfileInformation
             isLoggedInUser={isLoggedInUser}
-            name={userData.name}
-            image={userData.image}
+            name={userData?.name}
+            image={userData?.image}
           />
         </div>
       </main>

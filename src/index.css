@@ -7,7 +7,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+/* 
 @font-face {
   font-family: GTSuperBold;
   src: url("/fonts/GT-Super-Display-Bold-Trial.otf");
@@ -40,34 +40,45 @@
 @font-face {
   font-family: SohneBoldNew;
   src: url("/fonts/TestSöhne-Fett.otf");
-}
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
 .font-GTSuperBold {
-  font-family: GTSuperBold, serif;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
 }
 
 .font-GTSuperLight {
-  font-family: GTSuperLight, serif;
+  font-family: "Merriweather", serif;
+  font-weight: 300;
 }
 
 .font-GTSuperMedium {
-  font-family: GTSuperMedium, serif;
+  font-family: "Merriweather", serif;
+  font-weight: 500;
 }
 
 .font-GTSuperRegular {
-  font-family: GTSuperRegular, serif;
+  font-family: "Merriweather", serif;
+  font-weight: 400;
 }
 
 .font-SohneBold {
-  font-family: SohneBold, serif;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
 }
 
 .font-SohneLight {
-  font-family: SohneLight, serif;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 300;
 }
 
 .font-SohneBoldNew {
-  font-family: SohneBoldNew, serif;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 700;
 }
 
 .get-started-bg-color {
