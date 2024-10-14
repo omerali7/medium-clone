@@ -8,11 +8,13 @@ export default function ProfileInformation({
   name,
   image,
   currentOpen = false,
+  userDataLoading,
 }: {
   isLoggedInUser: boolean;
   name: string;
   image: string;
   currentOpen?: boolean;
+  userDataLoading: boolean;
 }) {
   const { handleLogOut, user, setUpdate } = useUserContext();
 
@@ -88,7 +90,11 @@ export default function ProfileInformation({
                 className="w-[100%] rounded-full border border-[#ccc] sm:w-[58%]"
               />
             </button>
-            <p className="font-SohneBold ml-6 text-xl">{name}</p>
+            {!userDataLoading ? (
+              <p className="font-SohneBold ml-6 text-xl">{name}</p>
+            ) : (
+              <div className="skeleton skeleton-text-small ml-6"></div>
+            )}
           </div>
         )}
 
@@ -151,7 +157,11 @@ export default function ProfileInformation({
                 className="w-[34%] rounded-full border border-[#ccc]"
               />
             </button>
-            <p className="font-SohneBold ml-1 mt-1">{name}</p>
+            {!userDataLoading ? (
+              <p className="font-SohneBold ml-1 mt-1">{name}</p>
+            ) : (
+              <div className="skeleton skeleton-text-medium"></div>
+            )}
           </div>
           {isLoggedInUser && (
             <>

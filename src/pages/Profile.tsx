@@ -8,9 +8,10 @@ import {
 import ProfileInformation from "../components/ProfileInformation";
 import { useUserContext } from "../context/UserContext";
 import { useState } from "react";
+import Skeleton from "../components/Skeleton";
 
 export default function Profile() {
-  const { user, isLoading: isUserLoading } = useUserContext();
+  const { user } = useUserContext();
 
   const { pathname } = useLocation();
 
@@ -28,7 +29,9 @@ export default function Profile() {
     pathname === "/my-profile" ? user.id : Number(id),
   );
 
-  if (isLoading || userDataLoading || isUserLoading) return null;
+  const times = [1, 2, 3, 4];
+
+  // if (isLoading || userDataLoading || isUserLoading) return null;
 
   return (
     <div className="h-dvh">
@@ -39,6 +42,7 @@ export default function Profile() {
             isLoggedInUser={isLoggedInUser}
             name={userData?.name}
             image={userData?.image}
+            userDataLoading={userDataLoading}
           />
           <div className="font-SohneLight mt-6 flex items-center gap-8 border-b text-base text-[#6B6B6B]">
             <button
@@ -58,10 +62,21 @@ export default function Profile() {
           </div>
           {currentOpen === "stories" && (
             <div className="mt-6 divide-y divide-[#F2F2F2]">
-              {!isLoading && data !== "" ? (
-                <PostList data={data} profile={isLoggedInUser} />
+              {!isLoading ? (
+                data !== "" ? (
+                  <PostList data={data} profile={isLoggedInUser} />
+                ) : (
+                  <p>No posts yet</p>
+                )
               ) : (
-                <p>No posts yet</p>
+                times.map((time) => (
+                  <div key={time}>
+                    <div className="skeleton skeleton-text-small"></div>
+                    <div className="mt-4">
+                      <Skeleton />
+                    </div>
+                  </div>
+                ))
               )}
             </div>
           )}
@@ -71,6 +86,7 @@ export default function Profile() {
               name={userData?.name}
               image={userData?.image}
               currentOpen={true}
+              userDataLoading={userDataLoading}
             />
           )}
         </div>
@@ -92,10 +108,21 @@ export default function Profile() {
             </div>
           </div>
           <div className="mt-6 divide-y divide-[#F2F2F2]">
-            {!isLoading && data !== "" ? (
-              <PostList data={data} profile={isLoggedInUser} />
+            {!isLoading ? (
+              data !== "" ? (
+                <PostList data={data} profile={isLoggedInUser} />
+              ) : (
+                <p>No posts yet</p>
+              )
             ) : (
-              <p>No posts yet</p>
+              times.map((time) => (
+                <div key={time}>
+                  <div className="skeleton skeleton-text-small"></div>
+                  <div className="mt-4">
+                    <Skeleton />
+                  </div>
+                </div>
+              ))
             )}
           </div>
         </div>
@@ -104,6 +131,7 @@ export default function Profile() {
             isLoggedInUser={isLoggedInUser}
             name={userData?.name}
             image={userData?.image}
+            userDataLoading={userDataLoading}
           />
         </div>
       </main>
