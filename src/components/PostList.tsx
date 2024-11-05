@@ -19,7 +19,9 @@ export default function PostList({
             image={post.image}
             id={post.id}
             createdAt={post.createdAt}
-            user={post.user}
+            userId={post.userId}
+            userImage={post.userImage}
+            userName={post.userName}
             profile={profile}
           />
         ))

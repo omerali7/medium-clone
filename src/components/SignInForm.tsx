@@ -40,10 +40,8 @@ export default function SignInForm() {
 
       setUser({
         name: user.name,
-        email: user.email,
-        password: user.password,
         id: user.id,
-        image: user.image,
+        image: user.image || "",
       });
     }
 
@@ -58,7 +56,7 @@ export default function SignInForm() {
 
   const handleGoogleLogin = () => {
     setIsGoogleAuth(true);
-    window.location.href = `${import.meta.env.VITE_API_URL}/oauth2/authorization/google`; // Redirect to Spring Boot OAuth URL
+    window.location.href = `${import.meta.env.VITE_API_URL}/oauth2/authorization/google`; 
   };
 
   return (

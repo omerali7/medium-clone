@@ -422,3 +422,9 @@
     @apply flex-center flex-col gap-4 rounded-[20px] border border-dark-4 px-5 py-8;
   }
 }
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}

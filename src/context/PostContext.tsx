@@ -27,6 +27,9 @@ const initialState: Post & PostState = {
   setQuery: () => {},
   isCreatingPost: true,
   setIsCreatingPost: () => {},
+  userId: 0,
+  userImage: "",
+  userName: "",
 };
 
 const PostContext = createContext(initialState);

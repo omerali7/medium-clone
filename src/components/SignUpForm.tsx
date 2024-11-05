@@ -56,9 +56,8 @@ export default function SignUpForm() {
       setUser({
         name: user.name,
         email: user.email,
-        password: user.password,
         id: user.id,
-        image: user.image,
+        image: user.image || "",
       });
     }
 

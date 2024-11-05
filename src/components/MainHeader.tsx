@@ -11,11 +11,12 @@ export default function MainHeader() {
   const { user } = useUserContext();
 
   const { image } = user;
+  console.log(image);
 
   return (
     <header className="flex w-full items-center justify-between border border-b border-[#F2F2F2] px-1.5 py-2 sm:px-3">
       <div className="relative flex items-center gap-2 sm:gap-4">
-        <Link to="/home" className="hidden sm:block">
+        <Link to="/home" className="">
           <img src="/logo.svg" className="w-40" />
         </Link>
         <LuSearch className="absolute left-[41%] hidden h-4 w-4 font-thin text-[#6B6B6B] sm:block" />

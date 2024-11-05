@@ -6,6 +6,7 @@ import {
 import PostList from "../components/PostList.tsx";
 import { usePostContext } from "../context/PostContext.tsx";
 import Skeleton from "../components/Skeleton.tsx";
+
 export default function Home() {
   const { query } = usePostContext();
 

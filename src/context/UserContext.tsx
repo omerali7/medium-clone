@@ -1,12 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { signOutUser, User } from "../api/user";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 type UserState = {
   setName: React.Dispatch<React.SetStateAction<string>>;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
-  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  email: string;
   isAuthenticated: boolean | null;
   setAuthenticated: React.Dispatch<React.SetStateAction<boolean | null>>;
   isLoading: boolean;
@@ -18,15 +17,15 @@ type UserState = {
   setUpdate: React.Dispatch<React.SetStateAction<number>>;
   isGoogleAuth: boolean;
   setIsGoogleAuth: React.Dispatch<React.SetStateAction<boolean>>;
+  password: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const initialState: User & UserState = {
   name: "",
-  password: "",
   email: "",
   setName: () => {},
   setEmail: () => {},
-  setPassword: () => {},
   isAuthenticated: null,
   setAuthenticated: () => {},
   isLoading: true,
@@ -34,8 +33,6 @@ const initialState: User & UserState = {
   handleLogOut: () => {},
   user: {
     name: "",
-    password: "",
-    email: "",
     image: "",
     id: 0,
   },
@@ -44,6 +41,8 @@ const initialState: User & UserState = {
   setUpdate: () => {},
   isGoogleAuth: false,
   setIsGoogleAuth: () => {},
+  password: "",
+  setPassword: () => {},
 };
 
 const UserContext = createContext(initialState);
@@ -64,12 +63,8 @@ export default function UserProvider({
 
   const [isGoogleAuth, setIsGoogleAuth] = useState<boolean>(false);
 
-  const navigate = useNavigate();
-
   const [user, setUser] = useState<User>({
     name: "",
-    password: "",
-    email: "",
     image: "",
     id: 0,
   });
@@ -84,74 +79,33 @@ export default function UserProvider({
   }
 
   useEffect(() => {
-    if (!isGoogleAuth)
-      axios
-        .post(`${import.meta.env.VITE_API_URL}/api/auth/session/validate`, "", {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            setAuthenticated(true);
-            console.log(res);
-            setUser({
-              name: res.data.name,
-              email: res.data.email,
-              password: res.data.password,
-              id: res.data.id,
-              image: res.data.image,
-            });
-          }
-        })
-        .catch((err) => {
-          if (err.status === 401) {
-            setAuthenticated(false);
-          }
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-  }, [isGoogleAuth, update]);
-
-  useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/session`, {
-        withCredentials: true, // Ensure cookies are sent with the request
+      .post(`${import.meta.env.VITE_API_URL}/api/auth/validate`, "", {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
       .then((res) => {
-        console.log(res);
-        if (res.data !== "") {
+        if (res.status === 200) {
+          setAuthenticated(true);
+          console.log(res);
           setUser({
             name: res.data.name,
-            email: res.data.email,
-            password: res.data.password,
             id: res.data.id,
             image: res.data.image,
-          }); // User is logged in, store user data
-        } else {
-          setAuthenticated(false); // No session, redirect to login
+          });
         }
       })
       .catch((err) => {
-        console.log(err);
+        if (err.status === 401) {
+          setAuthenticated(false);
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-  }, [navigate]);
-
-  // useEffect(() => {
-  //   if (isGoogleAuth)
-  //     axios
-  //       .get("http://localhost:8080/loginSuccess")
-  //       .then((response) => {
-  //         setAuthenticated(true);
-  //         console.log(response.data); // Handle the login success and navigate
-  //         navigate("/home");
-  //       })
-  //       .catch((error) => {
-  //         console.error("Login failed", error);
-  //       });
-  // }, [isGoogleAuth, navigate]);
+  }, [update]);
 
   return (
     <UserContext.Provider
@@ -169,8 +123,8 @@ export default function UserProvider({
         setAuthenticated,
         name,
         setName,
-        password,
         setPassword,
+        password,
         email,
         setEmail,
       }}

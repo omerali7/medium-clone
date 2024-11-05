@@ -31,17 +31,17 @@ export default function Post() {
             <div className="skeleton skeleton-text-heading"></div>
           )}
         </h1>
-        <Link to={`/profile/${data?.user?.id}`}>
+        <Link to={`/profile/${data?.userId}`}>
           <div className="mt-5 flex gap-4">
             <img
-              src={`${!isLoading ? data.user.image : ""}`}
+              src={`${!isLoading ? data.userImage : ""}`}
               className="skeleton w-[13.5%] rounded-full sm:w-[8%]"
             />
             <div className="mb-[2px] flex w-full flex-col">
               {!isLoading ? (
                 <>
                   <p className="font-SohneLight mt-[1px] text-base opacity-100 transition-opacity duration-500 hover:underline">
-                    {data.user.name}
+                    {data.userName}
                   </p>
 
                   <p className="font-SohneLight text-xs text-[#6B6B6B] opacity-100 transition-opacity duration-500">

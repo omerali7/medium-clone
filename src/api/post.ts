@@ -6,7 +6,9 @@ export type Post = {
   image: string;
   id?: number;
   createdAt?: string;
-  user?: PostUser;
+  userId?: number;
+  userName?: string;
+  userImage?: string
 };
 
 export type PostUser = {
@@ -24,6 +26,7 @@ export async function createPost(post: Post, userId: number) {
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: true,
       },
     );
 
@@ -35,7 +38,9 @@ export async function createPost(post: Post, userId: number) {
 
 export async function getAllPosts() {
   try {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`);
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`, {
+      withCredentials: true,
+    });
 
     return res.data;
   } catch (error) {
@@ -47,6 +52,7 @@ export async function getPostById(postId: number) {
   try {
     const res = await axios.get(
       `${import.meta.env.VITE_API_URL}/posts/${postId}`,
+      { withCredentials: true },
     );
 
     return res.data;
@@ -59,6 +65,7 @@ export async function getPostsByUserId(userId: number | undefined) {
   try {
     const res = await axios.get(
       `${import.meta.env.VITE_API_URL}/posts/user/${userId}`,
+      { withCredentials: true },
     );
 
     return res.data;
@@ -71,6 +78,7 @@ export async function getPostByTitle(title: string) {
   try {
     const res = await axios.get(
       `${import.meta.env.VITE_API_URL}/posts/title?q=${title}`,
+      { withCredentials: true },
     );
 
     return res.data;

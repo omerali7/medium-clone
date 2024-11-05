@@ -2,10 +2,10 @@ import axios from "axios";
 
 export type User = {
   name?: string;
-  email: string;
-  password: string;
-  image?: "";
+  image?: string;
   id?: number;
+  email?: string;
+  password?: string
 };
 
 export async function createUser(user: User) {
@@ -50,6 +50,7 @@ export async function getUserById(userId: number) {
   try {
     const res = await axios.get(
       `${import.meta.env.VITE_API_URL}/users/${userId}`,
+      { withCredentials: true },
     );
 
     return res.data;

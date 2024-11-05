@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import GetStartedFooter from "../components/GetStartedFooter";
 import GetStartedHeader from "../components/GetStartedHeader";
 import { useUserContext } from "../context/UserContext";
@@ -23,8 +23,10 @@ export default function GetStarted() {
               <p className="font-SohneBold text-base md:text-xl">
                 A place to read, write, and deepen your understanding
               </p>
-              <button className="font-SohneBold mt-8 w-[50%] rounded-full bg-[#000000] px-6 py-2 text-sm text-white sm:w-[18%] md:w-[20%] lg:text-lg md:text-base">
-                Start reading
+              <button className="font-SohneBold mt-8 w-[50%] rounded-full bg-[#000000] px-6 py-2 text-sm text-white sm:w-[18%] md:w-[20%] md:text-base lg:text-lg">
+                <Link to="/home">
+                  Start reading
+                </Link>
               </button>
             </div>
           </main>
