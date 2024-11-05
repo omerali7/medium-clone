@@ -56,6 +56,7 @@ export default function SignInForm() {
 
   const handleGoogleLogin = () => {
     setIsGoogleAuth(true);
+    console.log(`${import.meta.env.VITE_API_URL}/oauth2/authorization/google`);
     window.location.href = `${import.meta.env.VITE_API_URL}/oauth2/authorization/google`; 
   };
 
