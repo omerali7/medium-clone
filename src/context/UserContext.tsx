@@ -89,7 +89,6 @@ export default function UserProvider({
       .then((res) => {
         if (res.status === 200) {
           setAuthenticated(true);
-          console.log(res);
           setUser({
             name: res.data.name,
             id: res.data.id,

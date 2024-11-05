@@ -98,7 +98,6 @@ export async function updateUser({
         },
       },
     );
-    console.log(res.data);
 
     return res.data;
   } catch (error) {

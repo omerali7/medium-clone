@@ -33,7 +33,6 @@ export default function FileUploader() {
         data,
       );
 
-      console.log(res);
       setFile(res.data.url);
 
       setFileUrl(URL.createObjectURL(acceptedFiles[0]));

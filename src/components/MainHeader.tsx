@@ -11,7 +11,6 @@ export default function MainHeader() {
   const { user } = useUserContext();
 
   const { image } = user;
-  console.log(image);
 
   return (
     <header className="flex w-full items-center justify-between border border-b border-[#F2F2F2] px-1.5 py-2 sm:px-3">

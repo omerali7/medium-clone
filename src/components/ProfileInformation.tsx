@@ -25,7 +25,7 @@ export default function ProfileInformation({
   const [newName, setNewName] = useState<string>(name || "");
   const [newImage, setNewImage] = useState<string>(image || "");
 
-  const [imageUrl, setImageUrl] = useState<File>();
+  const [, setImageUrl] = useState<File>();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -36,20 +36,12 @@ export default function ProfileInformation({
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    console.log(
-      newName ? newName : name || "",
-      newImage ? newImage : image || "",
-      id,
-    );
-
     await mutateAsync({
       name: newName ? newName : name || "",
       image: newImage ? newImage : image || "",
       userId: id || 1,
-    }).then((res) => {
-      console.log(res);
+    }).then(() => {
       setUpdate((curr) => curr + 1);
-      console.log(res);
     });
   }
 
@@ -59,7 +51,6 @@ export default function ProfileInformation({
     const file = e.target.files[0];
 
     setImageUrl(file);
-    console.log(imageUrl);
 
     const data = new FormData();
 

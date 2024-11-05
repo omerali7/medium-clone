@@ -55,7 +55,6 @@ export default function PostProvider({
     setIsCreatingPost(true);
     e.preventDefault();
 
-    console.log(file);
 
     const post: Post = {
       title,
@@ -63,12 +62,10 @@ export default function PostProvider({
       image: file,
     };
 
-    console.log(post);
 
     const createdPost = await mutateAsync({ post, userId });
 
     if (createdPost) {
-      console.log(createdPost);
       setIsCreatingPost(false);
       navigate(`/post/${createdPost.id}`);
     }
