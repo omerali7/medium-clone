@@ -14,7 +14,7 @@ export default function Post() {
   const { data, isLoading } = useGetPostById(Number(id));
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top when component is mounted
+    window.scrollTo(0, 0); 
   }, []);
 
   return (

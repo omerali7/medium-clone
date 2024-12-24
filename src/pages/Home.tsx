@@ -5,45 +5,66 @@ import {
 } from "../react-query/queriesAndMutation.ts";
 import PostList from "../components/PostList.tsx";
 import { usePostContext } from "../context/PostContext.tsx";
-import Skeleton from "../components/Skeleton.tsx";
+import { useInView } from "react-intersection-observer";
+import { useEffect, useMemo } from "react";
+import PostsSkeleton from "../components/PostsSkeleton.tsx";
+import { useDebounce } from "use-debounce";
 
 export default function Home() {
   const { query } = usePostContext();
 
-  const { data, isLoading } = useGetAllPosts();
+  const { ref, inView } = useInView();
+
+  const [debouncedQuery] = useDebounce(query, 300);
+
+  const {
+    data,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    refetch,
+  } = useGetAllPosts();
   const { data: queryPostData, isLoading: queryPostDataLoading } =
-    useGetPostsByTitle(query);
+    useGetPostsByTitle(debouncedQuery);
 
-  const times = [1, 2, 3, 4, 5];
-
-  // Determine loading state
   const isLoadingPosts = isLoading || queryPostDataLoading;
-  const postsToShow = query ? queryPostData : data;
+
+  const postsToShow = useMemo(() => {
+    return debouncedQuery ? queryPostData : data?.pages.flatMap((page) => page);
+  }, [debouncedQuery, queryPostData, data]);
+
+  useEffect(() => {
+    if (inView && hasNextPage && !debouncedQuery) fetchNextPage();
+  }, [fetchNextPage, hasNextPage, inView, debouncedQuery]);
+
+  useEffect(() => {
+    async function run() {
+      if (!debouncedQuery) await refetch();
+    }
+
+    run();
+  }, [debouncedQuery, refetch]);
 
   return (
-    <div className={`${isLoadingPosts ? "h-full" : "h-dvh"}`}>
+    // <div className={`${isLoadingPosts ? "h-full" : "h-dvh"}`}>
+    <div className="h-full">
       <MainHeader />
       <main className="lg:container-home sm:container-home-bg flex h-full w-full justify-evenly gap-16">
         <div
-          className={`h-full w-[100%] ${!isLoadingPosts && "divide-y divide-[#F2F2F2]"} border-[#F2F2F2] px-4 pt-6 sm:px-0`}
+          className={`h-full w-[100%] ${!isLoadingPosts && "divide-y divide-[#F2F2F2]"} px-4 pt-6 sm:px-0`}
         >
-          {/* Show skeleton loader if posts are still loading */}
           {isLoadingPosts ? (
             <>
-              {times.map((time) => (
-                <div key={time}>
-                  <div className="skeleton skeleton-text-small"></div>
-                  <div className="mt-4">
-                    <Skeleton />
-                  </div>
-                </div>
-              ))}
+              <PostsSkeleton />
             </>
           ) : postsToShow && postsToShow.length > 0 ? (
-            // Show the posts when data is ready
-            <PostList data={postsToShow} />
+            <>
+              <PostList data={postsToShow} />
+              {isFetchingNextPage && <PostsSkeleton />}
+              <button ref={ref}></button>
+            </>
           ) : (
-            // Fallback if no posts are found
             <p>No results found</p>
           )}
         </div>

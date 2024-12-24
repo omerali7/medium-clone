@@ -80,7 +80,7 @@ export default function UserProvider({
 
   useEffect(() => {
     axios
-      .post(`${import.meta.env.VITE_API_URL}/api/auth/validate`, "", {
+      .post(`${import.meta.env.VITE_API_URL}/auth/validate`, "", {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
@@ -97,8 +97,10 @@ export default function UserProvider({
         }
       })
       .catch((err) => {
+        console.log(err);
         if (err.status === 401) {
           setAuthenticated(false);
+          console.log(err);
         }
       })
       .finally(() => {

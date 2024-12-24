@@ -5,13 +5,13 @@ export type User = {
   image?: string;
   id?: number;
   email?: string;
-  password?: string
+  password?: string;
 };
 
 export async function createUser(user: User) {
   try {
     const req = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/auth/signup`,
+      `${import.meta.env.VITE_API_URL}/auth/signup`,
       JSON.stringify(user),
       {
         headers: {
@@ -20,7 +20,6 @@ export async function createUser(user: User) {
         withCredentials: true,
       },
     );
-
     return req.data;
   } catch (error) {
     console.log(error);
@@ -30,7 +29,7 @@ export async function createUser(user: User) {
 export async function signInUser(user: { email: string; password: string }) {
   try {
     const req = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/auth/login`,
+      `${import.meta.env.VITE_API_URL}/auth/login`,
       JSON.stringify(user),
       {
         headers: {
@@ -62,7 +61,7 @@ export async function getUserById(userId: number) {
 export async function signOutUser() {
   try {
     const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/auth/logout`,
+      `${import.meta.env.VITE_API_URL}/auth/logout`,
       "",
       {
         withCredentials: true,
@@ -89,7 +88,7 @@ export async function updateUser({
 }) {
   try {
     const res = await axios.patch(
-      `${import.meta.env.VITE_API_URL}/users/update?id=${userId}&name=${name}&image=${image}`,
+      `${import.meta.env.VITE_API_URL}/users?id=${userId}&name=${name}&image=${image}`,
       "",
       {
         withCredentials: true,

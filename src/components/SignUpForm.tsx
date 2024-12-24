@@ -56,7 +56,7 @@ export default function SignUpForm() {
       setUser({
         name: user.name,
         email: user.email,
-        id: user.id,
+        id: createdUser.id,
         image: user.image || "",
       });
     }

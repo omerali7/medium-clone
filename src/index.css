@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 * {
   padding: 0;
@@ -12,39 +10,8 @@
   box-sizing: border-box;
 }
 
-.font-GTSuperBold {
-  font-family: "Merriweather", serif;
-  font-weight: 700;
-}
-
-.font-GTSuperLight {
-  font-family: "Merriweather", serif;
-  font-weight: 300;
-}
-
-.font-GTSuperMedium {
-  font-family: "Merriweather", serif;
-  font-weight: 500;
-}
-
-.font-GTSuperRegular {
-  font-family: "Merriweather", serif;
-  font-weight: 400;
-}
-
-.font-SohneBold {
-  font-family: "Source Sans 3", sans-serif;
-  font-weight: 500;
-}
-
-.font-SohneLight {
-  font-family: "Source Sans 3", sans-serif;
-  font-weight: 300;
-}
-
-.font-SohneBoldNew {
-  font-family: "Source Sans 3", sans-serif;
-  font-weight: 700;
+body {
+  font-family: "Montserrat", sans-serif;
 }
 
 .get-started-bg-color {

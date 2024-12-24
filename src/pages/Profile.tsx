@@ -12,7 +12,6 @@ import Skeleton from "../components/Skeleton";
 
 export default function Profile() {
   const { user } = useUserContext();
-
   const { pathname } = useLocation();
 
   const { id } = useParams();
@@ -30,8 +29,6 @@ export default function Profile() {
   );
 
   const times = [1, 2, 3, 4];
-
-  // if (isLoading || userDataLoading || isUserLoading) return null;
 
   return (
     <div className="h-dvh">
@@ -109,7 +106,7 @@ export default function Profile() {
           </div>
           <div className="mt-6 divide-y divide-[#F2F2F2]">
             {!isLoading ? (
-              data !== "" ? (
+              data !== "" && data.length !== 0 ? (
                 <PostList data={data} profile={isLoggedInUser} />
               ) : (
                 <p>No posts yet</p>

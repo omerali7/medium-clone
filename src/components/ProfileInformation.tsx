@@ -18,12 +18,12 @@ export default function ProfileInformation({
 }) {
   const { handleLogOut, user, setUpdate } = useUserContext();
 
-  const { mutateAsync } = useUpdateUser();
+  const { mutateAsync, isPending } = useUpdateUser();
 
   const { id } = user;
 
-  const [newName, setNewName] = useState<string>(name || "");
-  const [newImage, setNewImage] = useState<string>(image || "");
+  const [newName, setNewName] = useState<string>(name);
+  const [newImage, setNewImage] = useState<string>(image);
 
   const [, setImageUrl] = useState<File>();
 
@@ -68,6 +68,13 @@ export default function ProfileInformation({
 
       setNewImage(res.data.url);
     }
+  }
+
+  function handleCancel(e: React.FormEvent) {
+    e.preventDefault();
+
+    setNewName(name);
+    setNewImage(image);
   }
 
   return (
@@ -117,13 +124,22 @@ export default function ProfileInformation({
               </button>
               <button
                 type="submit"
-                className="font-SohneLight w-[25%] rounded-full bg-[#156D12] px-3.5 pb-2 pt-1.5 text-sm text-white sm:w-[20%]"
+                className={`font-SohneLight w-[25%] rounded-full bg-[#156D12] px-3.5 pb-2 pt-1.5 text-sm text-white sm:w-[20%] ${!newName && "bg-[#0d430b]"}`}
               >
-                Save
+                {isPending ? "Saving..." : "Save"}
+              </button>
+              <button
+                className="font-SohneLight -mt-5 w-[25%] rounded-full border border-[#156D12] bg-transparent px-3.5 pb-2 pt-1.5 text-sm text-[#156D12] sm:w-[20%]"
+                onClick={handleCancel}
+              >
+                Cancel
               </button>
             </form>
             {isLoggedInUser && (
-              <button onClick={handleLogOut} className="mt-5">
+              <button
+                onClick={handleLogOut}
+                className="mt-6 rounded-full bg-red px-3.5 py-1.5 text-sm text-white"
+              >
                 Log out
               </button>
             )}
@@ -156,29 +172,40 @@ export default function ProfileInformation({
           </div>
           {isLoggedInUser && (
             <>
-              <input
-                placeholder="Name"
-                type="text"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-                className="font-SohneLight mt-10 w-[100%] rounded-md border border-[#F2F2F2] bg-[#F2F2F2] px-2.5 py-2 text-sm outline-none focus:border-black focus:bg-[#F9F9F9]"
-              />
+              {!userDataLoading ? (
+                <input
+                  placeholder="Name"
+                  type="text"
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                  className="font-SohneLight mt-10 w-[100%] rounded-md border border-[#F2F2F2] bg-[#F2F2F2] px-2.5 py-2 text-sm outline-none focus:border-black focus:bg-[#F9F9F9]"
+                />
+              ) : (
+                <div className="skeleton skeleton-text-small ml-6"></div>
+              )}
               <div className="mt-8 flex justify-end gap-3">
-                <button className="font-SohneLight rounded-full border border-[#156D12] bg-transparent px-3.5 pb-2 pt-1.5 text-sm text-[#156D12]">
+                <button
+                  className="font-SohneLight rounded-full border border-[#156D12] bg-transparent px-3.5 pb-2 pt-1.5 text-sm text-[#156D12]"
+                  onClick={handleCancel}
+                >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="font-SohneLight rounded-full bg-[#156D12] px-3.5 pb-2 pt-1.5 text-sm text-white"
+                  className={`font-SohneLight rounded-full bg-[#156D12] px-3.5 pb-2 pt-1.5 text-sm text-white ${!newName && "bg-[#0d430b]"}`}
+                  disabled={!newName}
                 >
-                  Save
+                  {isPending ? "Saving..." : "Save"}
                 </button>
               </div>
             </>
           )}
         </form>
         {isLoggedInUser && (
-          <button onClick={handleLogOut} className="">
+          <button
+            onClick={handleLogOut}
+            className="rounded-full bg-red px-3.5 py-1.5 text-sm text-white"
+          >
             Log out
           </button>
         )}

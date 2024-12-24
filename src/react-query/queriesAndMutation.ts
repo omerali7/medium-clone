@@ -1,4 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import {
   createUser,
   getUserById,
@@ -62,9 +67,17 @@ export const useCreatePost = () => {
 };
 
 export const useGetAllPosts = () => {
-  return useQuery({
+  return useInfiniteQuery({
     queryKey: ["posts"],
     queryFn: getAllPosts,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      if (!lastPage || lastPage.length === 0 || lastPage === "") {
+        return undefined;
+      }
+
+      return allPages.length + 1;
+    },
   });
 };
 

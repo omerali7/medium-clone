@@ -16,10 +16,12 @@ export default function FileUploader() {
   //   mediaUrl,
   // }: FileUploaderProps
   const [fileUrl, setFileUrl] = useState("");
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
 
   const onDrop = useCallback(
     async (acceptedFiles: FileWithPath[]) => {
       //   fieldChange(acceptedFiles);
+      setIsUploadingImage(true);
       const data = new FormData();
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -36,6 +38,8 @@ export default function FileUploader() {
       setFile(res.data.url);
 
       setFileUrl(URL.createObjectURL(acceptedFiles[0]));
+
+      setIsUploadingImage(false);
     },
     [file],
   );
@@ -70,8 +74,9 @@ export default function FileUploader() {
             alt="file-upload"
           /> */}
           <h3 className="font-SohneLight px-12 py-12 text-center text-sm text-[#737373] sm:px-16 sm:py-20">
-            Include a high-quality image in your story to make it more inviting
-            to readers.
+            {!isUploadingImage
+              ? "Include a high-quality image in your story to make it more inviting to readers."
+              : "Uploading..."}
           </h3>
           {/* <p className="small-regular mb-6 text-light-4">SVG, PNG, JPG</p> */}
 

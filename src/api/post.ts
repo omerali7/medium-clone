@@ -8,7 +8,7 @@ export type Post = {
   createdAt?: string;
   userId?: number;
   userName?: string;
-  userImage?: string
+  userImage?: string;
 };
 
 export type PostUser = {
@@ -36,11 +36,18 @@ export async function createPost(post: Post, userId: number) {
   }
 }
 
-export async function getAllPosts() {
+// function delay(ms: number) {
+//   return new Promise((resolve) => setTimeout(resolve, ms));
+// }
+
+export async function getAllPosts({ pageParam }: { pageParam: number }) {
   try {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/posts`, {
-      withCredentials: true,
-    });
+    const res = await axios.get(
+      `${import.meta.env.VITE_API_URL}/posts?n=${pageParam}`,
+      {
+        withCredentials: true,
+      },
+    );
 
     return res.data;
   } catch (error) {

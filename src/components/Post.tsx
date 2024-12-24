@@ -19,6 +19,17 @@ export default function Post({
   userImage,
   userName,
 }: PostType & PostProps) {
+  console.log(
+    title,
+    content,
+    image,
+    id,
+    createdAt,
+    profile,
+    userId,
+    userImage,
+    userName,
+  );
   return (
     <Link to={`/post/${id}`} className="inline-block">
       <div className="grid w-[100%] cursor-pointer grid-cols-12 pb-4 pt-6 sm:gap-10">
@@ -30,7 +41,7 @@ export default function Post({
               image: userImage || "",
             }}
           />
-          <h1 className="font-SohneBoldNew mt-3 text-[18px] leading-[1.4] text-[#242424] sm:text-[22px]">
+          <h1 className="mt-3 text-[18px] font-bold leading-[1.3] text-[#242424] sm:text-[22px]">
             {title}
           </h1>
           <p className="font-SohneLight mt-2 line-clamp-2 text-[13px] text-[#6B6B6B] sm:line-clamp-3 sm:text-[15px]">
